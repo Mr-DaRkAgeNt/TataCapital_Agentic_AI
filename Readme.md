@@ -81,7 +81,7 @@ To see the full automated sanctioning flow, use these details during the demo:
 
 ## 👥 Team
 * **[MOMENTUM]** - 
-* **[PRIYAM PRAKASH]** -  Research & Documentation + Aalyzer & Tester 
+* **[PRIYAM PRAKASH]** -  Research & Documentation + Analyzer & Tester 
 * **[PRASOON MISHRA]** - Prototype Developer [ Frontend/UI + Backend Server ]
 
 ---
