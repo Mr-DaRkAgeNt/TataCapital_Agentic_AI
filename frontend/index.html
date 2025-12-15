@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tata Capital AI Agent</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #eef2f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        
+        /* Main Chat Container */
+        .chat-container { width: 400px; height: 650px; background: white; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* Header with Logo */
+        .header { background: #0056b3; color: white; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { width: 40px; height: 40px; background: white; border-radius: 50%; padding: 2px; object-fit: contain; }
+        .title { font-weight: bold; font-size: 18px; }
+        
+        /* Chat Area */
+        .chat-box { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #f9f9f9; }
+        .msg { padding: 12px 16px; border-radius: 15px; max-width: 80%; font-size: 14px; line-height: 1.4; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .bot { background: white; color: #333; border-bottom-left-radius: 2px; align-self: flex-start; border: 1px solid #eee; }
+        .user { background: #0056b3; color: white; border-bottom-right-radius: 2px; align-self: flex-end; }
+        
+        /* Input Area */
+        .input-area { padding: 20px; background: white; border-top: 1px solid #eee; display: flex; gap: 10px; }
+        input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 25px; outline: none; transition: 0.3s; }
+        input:focus { border-color: #0056b3; }
+        button { padding: 10px 25px; background: #0056b3; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        button:hover { background: #004494; }
+
+        /* Sanction Button Style */
+        .sanction-btn { display: inline-block; margin-top: 10px; padding: 10px 15px; background: #28a745; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 13px; box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3); }
+        .sanction-btn:hover { background: #218838; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="header">
+        <img src="logo.png" class="logo" alt="Tata Logo">
+        <div class="title">Tata Capital Assistant</div>
+    </div>
+    <div class="chat-box" id="chat-box">
+        </div>
+    <div class="input-area">
+        <input type="text" id="user-input" placeholder="Type here..." onkeypress="handleEnter(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    const userId = "user_" + Math.floor(Math.random() * 1000); 
+
+    window.onload = () => sendToBackend("START_CONVERSATION");
+
+    function handleEnter(e) { if(e.key === 'Enter') sendMessage(); }
+
+    function addMessage(text, sender) {
+        const box = document.getElementById("chat-box");
+        const div = document.createElement("div");
+        div.className = `msg ${sender}`;
+        div.innerHTML = text.replace(/\n/g, "<br>"); // Allow line breaks
+        box.appendChild(div);
+        box.scrollTop = box.scrollHeight;
+    }
+
+    function addDownloadLink(link) {
+        const box = document.getElementById("chat-box");
+        const a = document.createElement("a");
+        a.className = "sanction-btn";
+        a.href = link;
+        a.target = "_blank";
+        a.innerText = "📄 Download Sanction Letter";
+        box.appendChild(a);
+        box.scrollTop = box.scrollHeight;
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById("user-input");
+        const text = input.value;
+        if (!text) return;
+
+        addMessage(text, "user");
+        input.value = "";
+        await sendToBackend(text);
+    }
+
+    async function sendToBackend(message) {
+        try {
+            const res = await fetch('http://localhost:5000/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: message, user_id: userId })
+            });
+            const data = await res.json();
+            addMessage(data.response, "bot");
+            
+            if (data.action === "show_pdf") {
+                addDownloadLink(data.link);
+            }
+        } catch (error) {
+            addMessage("⚠️ Server Error. Please make sure python app.py is running.", "bot");
+        }
+    }
+</script>
+
+</body>
+</html>
