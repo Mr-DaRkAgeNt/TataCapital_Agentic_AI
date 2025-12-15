@@ -1,4 +1,4 @@
-# Momentum: Agentic AI Loan Orchestrator 🏦 🚀
+# Tata Capital Agentic AI Loan Orchestrator 🏦 🚀
 
 > **A "Zero-Touch" Intelligent Banking Assistant built for the EY Techathon 6.0.**
 >
@@ -7,9 +7,9 @@
 ---
 
 ## 📖 Executive Summary
-**Momentum** is a next-generation banking solution that replaces rigid, rule-based chatbots with an **Agentic AI Architecture**. Instead of simple scripted responses, Momentum employs a team of specialized autonomous agents—**Sales, Verification, and Underwriting**—that collaborate to handle the entire loan lifecycle.
+**Tata Capital Agentic AI** is a next-generation banking solution that replaces rigid, rule-based chatbots with an **Agentic AI Architecture**. Instead of simple scripted responses, Tata Capital Agentic AI employs a team of specialized autonomous agents—**Sales, Verification, and Underwriting**—that collaborate to handle the entire loan lifecycle.
 
-From real-time identity verification (PAN Check) to instant credit decisioning and dynamic legal document generation (Sanction Letter), Momentum automates the "Decisioning" and "Documentation" layers of banking, offering a frictionless experience for digital-native customers.
+From real-time identity verification (PAN Check) to instant credit decisioning and dynamic legal document generation (Sanction Letter), Tata Capital Agentic AI automates the "Decisioning" and "Documentation" layers of banking, offering a frictionless experience for digital-native customers.
 
 ## 🌟 Key Features
 * **🤖 Multi-Agent Orchestration:** A modular system where specialized agents handle specific tasks (Parsing, Risk, Legal) independently.
@@ -67,7 +67,7 @@ The system follows a **Hub-and-Spoke Agentic Model**:
 4.  **Launch Frontend**
     * Navigate to the `frontend` folder.
     * Open `index.html` in any browser.
-    * *Start chatting with Momentum!*
+    * *Start chatting with Tata Capital Agentic AI!*
 
 ## 🧪 Testing the Prototype (The "Happy Path")
 To see the full automated sanctioning flow, use these details during the demo:
