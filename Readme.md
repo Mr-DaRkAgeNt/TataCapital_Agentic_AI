@@ -80,9 +80,9 @@ To see the full automated sanctioning flow, use these details during the demo:
 *Try entering a low credit score user (e.g., "Priya") or an invalid PAN to see the rejection and validation logic in action.*
 
 ## 👥 Team
-* **[Your Name]** - Lead Developer & Architect
-* **[Team Member 2]** - Frontend & UX
-* **[Team Member 3]** - Research & Documentation
+* **[MOMENTUM]** - 
+* **[PRIYAM PRAKASH]** -  Research & Documentation + Aalyzer & Tester 
+* **[PRASOON MISHRA]** - Prototype Developer [ Frontend/UI + Backend Server ]
 
 ---
 *Built with ❤️ for the EY Techathon 6.0*
